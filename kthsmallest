@@ -1,0 +1,9 @@
+import heapq
+class Solution:
+    def kthSmallest(self, arr, k):
+        min_heap=[]
+        for i in arr:
+            heapq.heappush(min_heap,-i)
+            if (len(min_heap)>k):
+                heapq.heappop(min_heap)
+        return -heapq.heappop(min_heap)
