@@ -1,0 +1,10 @@
+class Solution:
+    def canAliceWin(self, nums: List[int]) -> bool:
+        sd_sum,dd_sum=0,0
+        for i in nums:
+            if i-9>0:
+                dd_sum+=i
+            else:
+                sd_sum+=i
+        return False if dd_sum==sd_sum else True
+        
