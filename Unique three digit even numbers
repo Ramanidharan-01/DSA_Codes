@@ -1,0 +1,36 @@
+class Solution:
+    def findEvenNumbers(self, digits: list[int]) -> list[int]:
+        # Step 1: Manual frequency count of digits 0-9
+        freq = [0] * 10
+        for d in digits:
+            freq[d] += 1
+            
+        res = set()
+
+        def backtrack(current_num, count):
+            # Base Case: We've formed a 3-digit number
+            if count == 3:
+                # Rule: Must be even
+                if current_num % 2 == 0:
+                    res.add(current_num)
+                return
+
+            for d in range(10):
+                # Rule: No leading zeros (first digit cannot be 0)
+                if count == 0 and d == 0:
+                    continue
+                
+                # Check if the digit is available to use
+                if freq[d] > 0:
+                    # Choose
+                    freq[d] -= 1
+                    # Explore (shift current number left and add new digit)
+                    backtrack(current_num * 10 + d, count + 1)
+                    # Un-choose (backtrack)
+                    freq[d] += 1
+
+        # Start recursion
+        backtrack(0, 0)
+        
+        # Return sorted list as per LeetCode requirements
+        return sorted(list(res))
