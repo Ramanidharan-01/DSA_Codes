@@ -1,0 +1,13 @@
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        n=x
+        i,j=1,n
+        while(i<=j):
+            mid=(i+j)//2
+            if mid*mid == n:
+                return mid
+            elif mid*mid>n:
+                j=mid-1
+            else:
+                i=mid+1
+        return j
