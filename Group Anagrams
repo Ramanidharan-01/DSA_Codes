@@ -1,0 +1,17 @@
+class Solution:
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+        anagrams = {}
+        for word in strs:
+            count = [0] * 26 
+            for char in word:
+                index = ord(char) - ord("a")
+                count[index] += 1
+            key_tuple = tuple(count)
+            if key_tuple in anagrams:
+                anagrams[key_tuple].append(word)
+            else:
+                anagrams[key_tuple] = [word]
+        result = []
+        for key in anagrams:
+            result.append(anagrams[key])
+        return result
