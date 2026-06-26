@@ -1,0 +1,18 @@
+class Solution:
+    def areAnagrams(self, s1, s2):
+        d=dict()
+        for i in s1:
+            if i not in d:
+               d[i]=1
+            else:
+               d[i]+=1
+        for j in s2:
+            if j not in d:
+                return False
+            else:
+                d[j]-=1
+        for i in d.values():
+            if i!=0:
+                return False
+        return True
+    
