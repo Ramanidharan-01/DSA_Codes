@@ -1,0 +1,19 @@
+class Solution:
+    def helperfunc(self, root, level, sums, count):
+        if root is None:
+            return
+        if level == len(sums):
+            sums.append(root.val)
+            count.append(1)
+        else:
+            sums[level] += root.val
+            count[level] += 1
+        self.helperfunc(root.left, level + 1, sums, count)
+        self.helperfunc(root.right, level + 1, sums, count)
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        sums = []
+        count = []
+        self.helperfunc(root, 0, sums, count)
+        for i in range(len(sums)):
+            sums[i] = sums[i]/count[i]
+        return sums
