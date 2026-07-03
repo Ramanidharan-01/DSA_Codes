@@ -1,0 +1,13 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        ans=0
+        s_=set()
+        for i in s:
+            if i not in s_:
+                s_.add(i)
+            else:
+                s_.remove(i)
+                ans+=2
+        if len(s_)!=0:
+            ans+=1
+        return ans
