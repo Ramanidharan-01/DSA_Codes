@@ -1,0 +1,14 @@
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        d=dict()
+        for i in arr:
+            if i not in d:
+                d[i]=1
+            else:
+                d[i]+=1
+        mask=0
+        for i in d.values():
+            if (mask & (1 << i)) != 0:
+                return False
+            mask^=(1<<i)
+        return True
