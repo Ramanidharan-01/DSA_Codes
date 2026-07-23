@@ -1,0 +1,16 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        m=len(s)
+        n=len(t)
+        if m!=n:
+            return False
+        freq1=[-1]*256
+        freq2=[-1]*256
+        for i in range(m):
+            idx1=ord(s[i])
+            idx2=ord(t[i])
+            if freq1[idx1]!=freq2[idx2]:
+                return False
+            freq1[idx1]=i
+            freq2[idx2]=i
+        return True
