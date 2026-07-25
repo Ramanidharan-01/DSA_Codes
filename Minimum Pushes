@@ -1,0 +1,14 @@
+class Solution:
+    def minimumPushes(self, word: str) -> int:
+        d=dict()
+        for i in word:
+            if i in d:
+                d[i]+=1
+            else:
+                d[i]=1
+        sorted_keys=sorted(d, key=d.get,reverse=True)
+        total_pushes = 0
+        for index, char in enumerate(sorted_keys):
+            pushes = (index // 8) + 1 
+            total_pushes += d[char] * pushes
+        return total_pushes
