@@ -1,0 +1,14 @@
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0, head)
+        prev = dummy
+        curr = head
+        while curr and curr.next:
+            odd = curr
+            even = curr.next
+            prev.next = even
+            odd.next = even.next
+            even.next = odd
+            prev = odd
+            curr = odd.next  
+        return dummy.next
