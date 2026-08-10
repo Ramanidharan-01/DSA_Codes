@@ -1,0 +1,13 @@
+class Solution:
+    def countSegments(self, s: str) -> int:
+        count=0
+        word_started=False
+        for i in s:
+            if i!=" ":
+                word_started=True
+            elif word_started and i==" ":
+                    count+=1
+                    word_started=False
+        if word_started:
+            count+=1
+        return count
