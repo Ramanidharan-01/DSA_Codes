@@ -1,0 +1,12 @@
+class Solution:
+    def toGoatLatin(self, sentence: str) -> str:
+        s=sentence.split()
+        count=0
+        ans=""
+        for i in range(len(s)):
+            count+=1
+            ans+="a"
+            if s[i][0] not in "aeiouAEIOU":
+                s[i]=s[i][1:]+s[i][0]
+            s[i]+="ma"+ans
+        return " ".join(s)
