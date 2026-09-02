@@ -1,6 +1,10 @@
 <div align="center">
   <h1> 🌌 The CodeSpace of Complexity </h1>
   <p><i>Where Brute Force goes to die, and <code>O(1)</code> is the Holy Grail.</i></p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white" alt="Java" />
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=flat&logo=c&logoColor=black" alt="C" />
+  <img src="https://img.shields.io/badge/Algorithms-Optimized-success" alt="Algorithms">
 </div>
 
 ---
