@@ -1,0 +1,51 @@
+class Solution:
+    def calculate(self, s: str) -> int:
+        s = s.replace(" ", "")
+        num = 0
+        has_num = False
+        sym_stack = []
+        num_stack = []
+        for i in range(len(s)):
+            if s[i].isdigit():
+                num = num * 10 + int(s[i])
+                has_num = True
+            else:
+                if has_num:
+                    num_stack.append(num)
+                    num = 0
+                    has_num = False
+                if s[i] == "(":
+                    sym_stack.append(s[i])
+                elif s[i] == ")":
+                    while sym_stack[-1] != "(":
+                        a = num_stack.pop()
+                        b = num_stack.pop()
+                        if sym_stack[-1] == "+":
+                            num_stack.append(b + a)
+                        else:
+                            num_stack.append(b - a)
+                        sym_stack.pop()
+                    sym_stack.pop()
+                elif s[i] in "+-":
+                    if i == 0 or s[i-1] == "(":
+                        num_stack.append(0)
+                    while sym_stack and sym_stack[-1] in "+-":
+                        a = num_stack.pop()
+                        b = num_stack.pop()
+                        if sym_stack[-1] == "+":
+                            num_stack.append(b + a)
+                        else:
+                            num_stack.append(b - a)
+                        sym_stack.pop()
+                    sym_stack.append(s[i])
+        if has_num:
+            num_stack.append(num)  
+        while sym_stack:
+            a = num_stack.pop()
+            b = num_stack.pop()
+            if sym_stack[-1] == "+":
+                num_stack.append(b + a)
+            else:
+                num_stack.append(b - a)
+            sym_stack.pop()
+        return num_stack[0]
