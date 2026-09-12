@@ -1,0 +1,13 @@
+class Solution:
+    def isValid(self, word: str) -> bool:
+        has_vowel=False
+        has_consnt=False
+        for i in word:
+            if not i.isalnum():
+                return False
+            if not i.isdecimal():
+                if i in "AEIOUaeiou":
+                    has_vowel=True
+                else:
+                    has_consnt=True
+        return has_vowel and has_consnt and len(word)>2
