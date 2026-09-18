@@ -1,0 +1,18 @@
+class Solution:
+    def countAnagrams(self, s: str) -> int:
+        words=list(s.strip().split())
+        ans=1
+        for word in words:
+            n=math.factorial(len(word))
+            r=1
+            d=dict()
+            for i in word:
+                if i in d:
+                    d[i]+=1
+                else:
+                    d[i]=1
+            for i in d.values():
+                if i>1:
+                    r*=math.factorial(i)
+            ans*=(n//r)
+        return ans%(10**9+7)
